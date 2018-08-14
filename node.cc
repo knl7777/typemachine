@@ -50,14 +50,14 @@ bool Node::ErasePreviousNode() {
 	if (!m_prev)
 		return false;
 
-	Node* t = m_prev;
+	Node* old_prev = m_prev;
 
 	if (m_prev->m_prev){
 		m_prev->m_prev->m_next = this;
 	}
 	m_prev = m_prev->m_prev;
 
-	delete t;
+	delete old_prev;
 
 	return true;
 }
@@ -66,14 +66,14 @@ bool Node::EraseNextNode() {
 	if (!m_next)
 		return false;
 
-	Node* t = m_next;
+	Node *old_next = m_next;
 
 	if (m_next->m_next){
 		m_next->m_next->m_prev = this;
 	}
 	m_next = m_next->m_next;
 
-	delete t;
+	delete old_next;
 
 	return true;
 }
