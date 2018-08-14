@@ -23,7 +23,7 @@ Node* Node::GetNextNode() {
 
 Node* Node::InsertPreviousNode(char data) {
 	Node* new_node = new Node(data);
-	if (m_prev){
+	if (nullptr != m_prev){
 		m_prev->m_next = new_node;
 	}
 	new_node->m_prev = m_prev;
@@ -35,7 +35,7 @@ Node* Node::InsertPreviousNode(char data) {
 
 Node* Node::InsertNextNode(char data) {
 	Node* new_node = new Node(data);
-	if (m_next){
+	if (nullptr != m_next){
 		m_next->m_prev = new_node;
 	}
 	new_node->m_next = m_next;
@@ -47,12 +47,12 @@ Node* Node::InsertNextNode(char data) {
 }
 
 bool Node::ErasePreviousNode() {
-	if (!m_prev)
+	if (nullptr == m_prev)
 		return false;
 
 	Node* old_prev = m_prev;
 
-	if (m_prev->m_prev){
+	if (nullptr != m_prev->m_prev){
 		m_prev->m_prev->m_next = this;
 	}
 	m_prev = m_prev->m_prev;
@@ -63,12 +63,12 @@ bool Node::ErasePreviousNode() {
 }
 
 bool Node::EraseNextNode() {
-	if (!m_next)
+	if (nullptr == m_next)
 		return false;
 
 	Node *old_next = m_next;
 
-	if (m_next->m_next){
+	if (nullptr != m_next->m_next){
 		m_next->m_next->m_prev = this;
 	}
 	m_next = m_next->m_next;
